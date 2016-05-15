@@ -2,3 +2,7 @@ services:
     nav_wunderlist.client:
         class: Nav\WunderlistBundle\Client\Wunderlist
         arguments: ["@service_container"]
+
+    nav_wunderlist.tasks:
+        class: Nav\WunderlistBundle\Client\WunderlistTasks
+        arguments: ["@service_container", "@doctrine.orm.default_entity_manager"]

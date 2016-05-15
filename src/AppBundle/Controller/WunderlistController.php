@@ -81,4 +81,20 @@ class WunderlistController extends Controller
             return $this->redirectToRoute('wunderlist');
         }
     }
+
+    /**
+     * The callback url where we will be send after
+     * wunderlist authorizes us for access on the user resource.
+     *
+     * @Route("/tasks", name="wunderlist_tasks")
+     */
+    public function tasksAction(Request $request)
+    {
+        // TODO: Tasks per list
+        // Using wunderlistTasks service
+        // Create tasks
+        // Update tasks
+        // Delete tasks
+        die('Wunderlist Tasks');
+    }
 }
