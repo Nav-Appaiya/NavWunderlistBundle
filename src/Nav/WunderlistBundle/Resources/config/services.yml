@@ -1,0 +1,4 @@
+services:
+    nav_wunderlist.client:
+        class: Nav\WunderlistBundle\Client\Wunderlist
+        arguments: ["@service_container"]

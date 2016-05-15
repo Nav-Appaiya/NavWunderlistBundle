@@ -1,0 +1,3 @@
+nav_wunderlist_homepage:
+    path:     /
+    defaults: { _controller: NavWunderlistBundle:Default:index }
