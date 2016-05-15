@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 /app/config/parameters.yml
 /build/
 /phpunit.xml
@@ -15,7 +15,7 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
-=======
+.idea
 # Cache and logs (Symfony2)
 /app/cache/*
 /app/logs/*
@@ -56,4 +56,3 @@
 
 # Composer PHAR
 /composer.phar
->>>>>>> 7b7f07777c92813943bf7fb82a2980329678243d
