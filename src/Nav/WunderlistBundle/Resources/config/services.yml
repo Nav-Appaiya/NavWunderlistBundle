@@ -1,7 +1,7 @@
 services:
     nav_wunderlist.client:
         class: Nav\WunderlistBundle\Client\Wunderlist
-        arguments: ["@service_container"]
+        arguments: ["@service_container", "@request_stack"]
 
     nav_wunderlist.tasks:
         class: Nav\WunderlistBundle\Client\WunderlistTasks

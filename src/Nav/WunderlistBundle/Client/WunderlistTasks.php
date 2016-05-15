@@ -10,19 +10,25 @@ namespace Nav\WunderlistBundle\Client;
 
 
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\Container;
 
 class WunderlistTasks extends Wunderlist
 {
-    public function __construct(ContainerAwareInterface $container, EntityManager $entityManager)
+    public function __construct(Container $container, EntityManager $entityManager)
     {
-        parent::__construct();
         $this->container = $container;
         $this->em = $entityManager;
     }
 
-    public function getListOfTasks()
+    // Return list of tasks for listid
+    public function getTasksForListId($list_id)
     {
-        return 'listings';
+        if (isset($list_id)) {
+            $client = $this->client;
+            echo '<pre>';
+            var_dump($client);exit;
+        } else{
+            return false;
+        }
     }
 }

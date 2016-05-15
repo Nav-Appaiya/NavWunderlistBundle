@@ -25,7 +25,6 @@ class Wunderlist
     {
         $this->access_url = 'https://www.wunderlist.com/oauth/access_token';
         $this->container = $containerAware;
-        $this->client = new Client();
     }
 
     public function getAuthorization()
@@ -41,7 +40,8 @@ class Wunderlist
 
     public function getAccessToken(Request $request)
     {
-        $code = $request->get('code', null);
+        $code = $request->get('code', false);
+
         if(!is_null($code)){
             $client = new Client([
                 'base_uri' => 'https://www.wunderlist.com/'
