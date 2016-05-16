@@ -7,7 +7,7 @@ use GuzzleHttp\Exception\ClientException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
-class TestController extends Controller
+class WunderlistTestController extends Controller
 {
     /**
      * @Route("/test", name="test_index")
@@ -17,18 +17,21 @@ class TestController extends Controller
      */
     public function indexAction()
     {
+        $clientId = $this->getParameter('wunderlist.clientid');
+        $clientSecret = $this->getParameter('wunderlist.clientsecret');
+        $baseUrl = $this->getParameter('wunderlist.baseurl');
+
         $taskService = $this->get('nav_wunderlist.tasks');
         $client = $taskService->getWunderlistAccountForTesting();
 
-        $lists = $taskService->getLists();
-        $tasks = $taskService->getTasksForListId("141965745");
-        $files = $taskService->getFilesForListId("141965745");
+//        $lists = $taskService->getLists();
+//        $tasks = $taskService->getTasksForListId("250550812");
+//        $files = $taskService->getFilesForListId("250550812");
 
-        $newTask = $taskService->createTask("250495195", "Nieuwe taak via API");
-        $newList = $taskService->createList("Mijn nieuwe lijst");
+        $newTask = $taskService->createTask("250550812", "Nieuwe taak via API");
+//        $newList = $taskService->createList("Mijn nieuwe lijst");
 
-        print_r($newList);
-        exit;
+        die('End of controller.');
     }
 
     public function getListsAndTasks()

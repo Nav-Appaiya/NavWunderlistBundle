@@ -3,5 +3,5 @@ app:
     type:     annotation
 
 test:
-    resource: "@AppBundle/Controller/TestController.php"
+    resource: "@AppBundle/Controller/WunderlistTestController.php"
     type:     annotation

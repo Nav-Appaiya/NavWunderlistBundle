@@ -1,3 +1,8 @@
+parameters:
+    wunderlist.clientid: "21f6e505604ffff759c4"
+    wunderlist.clientsecret: "50d39412458c1c30fd3fe9f00f9eb0ddd76732618ede7fc5036ec60b3860"
+    wunderlist.baseurl: "https://a.wunderlist.com/"
+
 services:
     nav_wunderlist.client:
         class: Nav\WunderlistBundle\Client\Wunderlist

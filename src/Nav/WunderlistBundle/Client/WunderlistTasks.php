@@ -109,7 +109,6 @@ class WunderlistTasks extends Wunderlist
             ]);
 
             return json_decode($newList->getBody()->getContents());
-            
         } else{
             throw new \Exception('Please provide a Wunderlist list title for the list to be created.');
         }

@@ -23,7 +23,7 @@ class Wunderlist
 
     public function __construct(Container $containerAware)
     {
-        $this->access_url = 'https://www.wunderlist.com/oauth/access_token';
+        $this->access_url = $containerAware->getParameter('wunderlist.baseurl') . 'oauth/access_token';
         $this->container = $containerAware;
     }
 
