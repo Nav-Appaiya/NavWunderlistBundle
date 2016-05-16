@@ -41,7 +41,7 @@ class Wunderlist
     public function getAccessToken(Request $request)
     {
         $code = $request->get('code', false);
-
+        
         if(!is_null($code)){
             $client = new Client([
                 'base_uri' => 'https://www.wunderlist.com/'

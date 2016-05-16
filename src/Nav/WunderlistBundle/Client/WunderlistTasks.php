@@ -52,6 +52,9 @@ class WunderlistTasks extends Wunderlist
 
     public function getTasksForListId($listId = false)
     {
+        if(!$this->client){
+            $this->client = $this->getWunderlistAccountForTesting();
+        }
         if($listId){
             $tasks = $this->client->get('/api/v1/tasks', [
                 'query' => [
