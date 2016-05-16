@@ -1,3 +1,7 @@
 app:
     resource: "@AppBundle/Controller/WunderlistController.php"
     type:     annotation
+
+test:
+    resource: "@AppBundle/Controller/TestController.php"
+    type:     annotation

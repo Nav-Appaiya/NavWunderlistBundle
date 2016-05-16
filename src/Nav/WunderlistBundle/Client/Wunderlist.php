@@ -46,11 +46,13 @@ class Wunderlist
             $client = new Client([
                 'base_uri' => 'https://www.wunderlist.com/'
             ]);
-            $accessResponse = $client->request('POST', '/oauth/access_token', ['json' => [
-                'client_id' => '21f6e505604ffff759c4',
-                'client_secret' => '50d39412458c1c30fd3fe9f00f9eb0ddd76732618ede7fc5036ec60b3860',
-                'code' => $code,
-            ]])->getBody()->getContents();
+            $accessResponse = $client->request('POST', '/oauth/access_token', [
+                'json' => [
+                    'client_id' => '21f6e505604ffff759c4',
+                    'client_secret' => '50d39412458c1c30fd3fe9f00f9eb0ddd76732618ede7fc5036ec60b3860',
+                    'code' => $code,
+                ]
+            ])->getBody()->getContents();
 
             $access = json_decode($accessResponse);
 

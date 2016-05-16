@@ -31,6 +31,20 @@ class WunderlistAccount
     /**
      * @var string
      *
+     * @ORM\Column(name="username", type="string", length=255,nullable=true)
+     */
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="passsword", type="string", length=255,nullable=true)
+     */
+    private $passsword;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="account_id", type="integer", nullable=true)
      */
     private $accountId;
@@ -62,6 +76,13 @@ class WunderlistAccount
      * @ORM\Column(name="access_token", type="string", length=255, nullable=true)
      */
     private $accessToken;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="client_id", type="string", length=255, nullable=true)
+     */
+    private $clientId;
 
 
     /**
@@ -209,6 +230,60 @@ class WunderlistAccount
     public function setAccountId($accountId)
     {
         $this->accountId = $accountId;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param string $username
+     * @return WunderlistAccount
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPasssword()
+    {
+        return $this->passsword;
+    }
+
+    /**
+     * @param string $passsword
+     * @return WunderlistAccount
+     */
+    public function setPasssword($passsword)
+    {
+        $this->passsword = $passsword;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getClientId()
+    {
+        return $this->clientId;
+    }
+
+    /**
+     * @param string $clientId
+     * @return WunderlistAccount
+     */
+    public function setClientId($clientId)
+    {
+        $this->clientId = $clientId;
         return $this;
     }
     

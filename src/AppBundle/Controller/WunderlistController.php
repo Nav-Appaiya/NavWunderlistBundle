@@ -50,7 +50,6 @@ class WunderlistController extends Controller
             // API list Resources
             $lists = json_decode($client->get('/api/v1/lists')->getBody()->getContents());
             $account = json_decode($client->get('/api/v1/user')->getBody()->getContents());
-            echo '<pre>';
 
             $user = $accountRepo->findOneBy([
                 'accountId' => $account->id
@@ -65,6 +64,8 @@ class WunderlistController extends Controller
             $user->setRevision($account->revision);
             $user->setCreatedAt(new \DateTime());
             $user->setAccessToken($request->get('code'));
+            $user->setUsername($request->get('code'));
+            $user->setPasssword($request->get('code'));
 
             $em->persist($user);
             $em->flush();
@@ -97,7 +98,6 @@ class WunderlistController extends Controller
                 $savedLists[] = $wlListResource->title;
             }
 
-
             foreach ($savedLists as $savedList) {
                 echo 'saved lists: ' . $savedList . "<br />";
             }
@@ -121,9 +121,12 @@ class WunderlistController extends Controller
         $list = $listRepo->find('3b5c9e82-1ab3-11e6-a571-877de0eaf200');
 
         $taskService = $this->get('nav_wunderlist.tasks');
-        
-        print_r($taskService->getTasksForListId($list->getWunderlistId()));exit;
+        $wunderlistAccount = $taskService->getWunderlistAccountForTesting();
 
+//        echo '<pre>';
+//
+        print_r($wunderlistAccount->get('api/v1/lists'));exit;
+        
         // Using wunderlistTasks service
         // Create tasks
         // Update tasks
