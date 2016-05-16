@@ -30,7 +30,7 @@ class Wunderlist
     public function getAuthorization()
     {
         $authUrl = 'https://www.wunderlist.com/oauth/authorize?' .
-            'client_id=21f6e505604ffff759c4&' .
+            'client_id=YOUR-CLIENT-ID&' .
             'redirect_uri=' . $this->container->get('request_stack')->getCurrentRequest()->getUriForPath('/callback') .
             '&state=RANDOM
         ';
@@ -48,8 +48,8 @@ class Wunderlist
             ]);
             $accessResponse = $client->request('POST', '/oauth/access_token', [
                 'json' => [
-                    'client_id' => '21f6e505604ffff759c4',
-                    'client_secret' => '50d39412458c1c30fd3fe9f00f9eb0ddd76732618ede7fc5036ec60b3860',
+                    'client_id' => 'YOUR-CLIENT-ID',
+                    'client_secret' => 'YOUR-APP-SECRET',
                     'code' => $code,
                 ]
             ])->getBody()->getContents();
@@ -61,7 +61,7 @@ class Wunderlist
                     'base_uri' => 'https://a.wunderlist.com',
                     'headers' => [
                         'X-Access-Token' => $access->access_token,
-                        'X-Client-ID'     => '21f6e505604ffff759c4'
+                        'X-Client-ID'     => 'YOUR-CLIENT-ID'
                     ]
                 ]);
             }
