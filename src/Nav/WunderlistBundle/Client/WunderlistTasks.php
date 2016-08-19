@@ -29,14 +29,15 @@ class WunderlistTasks extends Wunderlist
     public function getWunderlistAccountForTesting()
     {
         $accountRepo = $this->em->getRepository('NavWunderlistBundle:WunderlistAccount');
-        $account = $accountRepo->find("51acf87c-1ada-11e6-a571-877de0eaf200");
+        $account = $accountRepo->find("c8de18c0-6615-11e6-a580-0a0027000003");
         
         $this->client = new Client([
             'base_uri' => 'https://a.wunderlist.com/',
             'headers' => [
                 'X-Access-Token' => $account->getAccessToken(),
                 'X-Client-ID'     => $account->getClientId()
-            ]
+            ],
+            'verify' => false
         ]);
         
         return $this->client;

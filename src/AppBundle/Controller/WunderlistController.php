@@ -64,9 +64,9 @@ class WunderlistController extends Controller
             $user->setRevision($account->revision);
             $user->setCreatedAt(new \DateTime());
             $user->setAccessToken($request->get('code'));
-            $user->setUsername($request->get('code'));
-            $user->setPasssword($request->get('code'));
-
+            $user->setUsername($this->getParameter('wunderlist.clientid'));
+            $user->setPasssword($this->getParameter('wunderlist.clientsecret'));
+            $user->setClientId($this->getParameter('wunderlist.clientid'));
             $em->persist($user);
             $em->flush();
 
@@ -93,44 +93,33 @@ class WunderlistController extends Controller
                 $list->setType($wlListResource->type);
 
                 $em->persist($list);
-                $em->flush();
-
                 $savedLists[] = $wlListResource->title;
             }
 
-            foreach ($savedLists as $savedList) {
-                echo 'saved lists: ' . $savedList . "<br />";
-            }
-            exit;
+            $em->flush();
         }else{
             return $this->redirectToRoute('wunderlist');
         }
+
+        return $this->render('@NavWunderlist/Default/landing.html.twig', [
+            'savedLists' => $savedLists,
+            'user' => $user
+        ]);
     }
 
     /**
-     * The callback url where we will be send after
-     * wunderlist authorizes us for access on the user resource.
+     * Displaying tasks for authed user.
      *
      * @Route("/tasks", name="wunderlist_tasks")
      */
     public function tasksAction(Request $request)
     {
-        // TODO: Tasks per list
-        $em = $this->getDoctrine();
-        $listRepo = $em->getRepository('NavWunderlistBundle:WunderlistList');
-        $list = $listRepo->find('3b5c9e82-1ab3-11e6-a571-877de0eaf200');
+        // Display Local tasks
+        $em = $this->getDoctrine()->getEntityManager();
+        $taskRepo = $em->getRepository('NavWunderlistBundle:WunderlistTask');
 
-        $taskService = $this->get('nav_wunderlist.tasks');
-        $wunderlistAccount = $taskService->getWunderlistAccountForTesting();
-
-//        echo '<pre>';
-//
-        print_r($wunderlistAccount->get('api/v1/lists'));exit;
-        
-        // Using wunderlistTasks service
-        // Create tasks
-        // Update tasks
-        // Delete tasks
-        die('Wunderlist Tasks');
+        return $this->render('@NavWunderlist/Default/tasks.html.twig', [
+            'tasks' => $taskRepo->findAll()
+        ]);
     }
 }

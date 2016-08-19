@@ -40,21 +40,21 @@ class WunderlistTestController extends Controller
             'base_uri' => 'https://a.wunderlist.com/',
             'headers' => [
                 'X-Access-Token' => 'bec8cde9f07d6c618b4ea92cc291e4d542dadc6531dcabe084df27b39675',
-                'X-Client-ID' => 'YOUR-CLIENT-ID'
+                'X-Client-ID' => $this->getParameter('wunderlist.clientid')
             ]
         ]);
 
         $lists = $client->request('GET', '/api/v1/lists', [
             'headers' => [
                 'X-Access-Token' => 'bec8cde9f07d6c618b4ea92cc291e4d542dadc6531dcabe084df27b39675',
-                'X-Client-ID' => 'YOUR-CLIENT-ID'
+                'X-Client-ID' => $this->getParameter('wunderlist.clientid')
             ]
         ]);
 
         $tasks = $client->request('GET', '/api/v1/tasks', [
             'headers' => [
                 'X-Access-Token' => 'bec8cde9f07d6c618b4ea92cc291e4d542dadc6531dcabe084df27b39675',
-                'X-Client-ID' => 'YOUR-CLIENT-ID'
+                'X-Client-ID' => $this->getParameter('wunderlist.clientid')
             ],
             'query' => [
                 'list_id' => '141965745'

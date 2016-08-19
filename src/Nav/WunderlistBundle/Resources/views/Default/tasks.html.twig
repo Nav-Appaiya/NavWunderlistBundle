@@ -1,0 +1,6 @@
+
+    {% if tasks is defined %}
+        {% for task in tasks %}
+            {{ dump(task) }}
+        {% endfor %}
+    {% endif %}
